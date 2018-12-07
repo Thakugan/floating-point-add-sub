@@ -49,7 +49,7 @@ module test_ADDER;
         begin
             clock <= 1'b0;
             while (1) begin
-                #5 clock <= ~clock;
+                #1 clock <= ~clock;
             end
         end
 
@@ -64,14 +64,85 @@ module test_ADDER;
 
             // test case 1
             double_A = 5.5; double_B = -7.5;
-            #200 float_A = A_wire; float_B = B_wire;
-            #200 double_result = $bitstoreal(result_wire_double);
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
             #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
 
             // test case 2
             double_A = 13.3; double_B = 9.11;
-            #200 float_A = A_wire; float_B = B_wire;
-            #200 double_result = $bitstoreal(result_wire_double);
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
+            #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
+
+            // test case 2
+            double_A = -13.3; double_B = 9.11;
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
+            #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
+
+            // testing 0 additions
+            // test case 3
+            double_A = 0.0; double_B = 0.0;
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
+            #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
+
+            // test case 4
+            double_A = 0.0; double_B = 1.1;
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
+            #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
+
+            // test case 5
+            double_A = 1.1; double_B = 0.0;
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
+            #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
+
+            // testing smaller nummbers
+            // test case 6
+            double_A = 0.000001; double_B = 0.000001;
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
+            #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
+
+            // test case 7
+            double_A = 1.1; double_B = 2.2;
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
+            #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
+
+            // testing large mantissas
+            // test case 8
+            double_A = 3.3333333333; double_B = 4.4444444444;
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
+            #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
+
+            // testing large mantissas with small ones
+            // test case 9
+            double_A = 3.3333333333; double_B = 4.4;
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
+            #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
+
+            // testing large numbers
+            // test case 10
+            double_A = 3333333.333; double_B = 44444444.444;
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
+            #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
+
+            // test case 11
+            double_A = 3.333; double_B = 44444444.444;
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
+            #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
+
+            // test case 12
+            double_A = -3333333.333; double_B = 44444444.444444444;
+            #300 float_A = A_wire; float_B = B_wire;
+            #300 double_result = $bitstoreal(result_wire_double);
             #100 $display("A = %f,\tB = %f,\tresult = %f", double_A, double_B, double_result);
 
             // add new test cases here...
